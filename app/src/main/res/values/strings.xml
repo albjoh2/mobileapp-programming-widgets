@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Widgets</string>
     <string name="screen_title">Settings</string>
+    <string name="screen_title">Accessibility</string>
+    <string name="screen_title">Less particles</string>
+    <string name="screen_title">Lower quality</string>
+    <string name="screen_title">Color Accessibility</string>
+    <string name="screen_title">Quality</string>
+    <string name="screen_title">FPS</string>
+    <string name="screen_title">Difficulty</string>
 </resources>
