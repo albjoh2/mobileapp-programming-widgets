@@ -1,42 +1,51 @@
 
 # Rapport
 
-**Skriv din rapport här!**
+Jag redigerade främst layouten med hjälp av XML, jag upplevde drag and drop vyn svårarbetad. 
 
-_Du kan ta bort all text som finns sedan tidigare_.
+En mockup skapades, det är en inställningsvy till exempelvis ett spel där man kan ändra
+en apps grafikinställningar. Mockupen ser ut såhär.
 
-## Följande grundsyn gäller dugga-svar:
+![](Mockup.png)
 
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
+Nästa steg var att lägga in alla delar av layouten i vyn, där användes drag and drop. För att
+placera elementen på rätt plats används främst app:layout_constraint - End, Start, Top och 
+Bottom. Här är ett exempel på ett xml element som placerats i mitten horrisontellt genom
+att använda toStartOf och ToEndOf="parent" och sedan specificeras det att den ska placeras
+under elementet med ID radioGroup. Detta placerar texten "FPS"
 
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
+        <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/viewTitle3"
+        android:layout_marginTop="10dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radioGroup" />
 
-```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
-    }
-}
-```
+För att fylla alla textfält med text används filen strings.xml. Innanför resources taggarna
+skapas ett stringelement som ges ett namnattribut, sedan texten som jag vill använda följt av
+sluttaggen. För att referera till texten i layouten används följande attribut:
+android:text="@string/viewTitle3".
 
-Bilder läggs i samma mapp som markdown-filen.
+Såhär ser strängarna ut i strings.xml.
 
-![](android.png)
+    <resources>
+        <string name="app_name">Widgets</string>
+        <string name="screen_title">Settings</string>
+        <string name="viewTitle1">Accessibility</string>
+        <string name="switchText1">Less particles</string>
+        <string name="switchText2">Lower quality</string>
+        <string name="switchText3">Color Accessibility</string>
+        <string name="viewTitle2">Quality</string>
+        <string name="viewTitle3">FPS</string>
+        <string name="viewTitle4">Difficulty</string>
+        <string name="radioText1">Low</string>
+        <string name="radioText2">Mid</string>
+        <string name="radioText3">High</string>
+        <string name="button">Save</string>
+    </resources>
 
-Läs gärna:
-
-- Boulos, M.N.K., Warren, J., Gong, J. & Yue, P. (2010) Web GIS in practice VIII: HTML5 and the canvas element for interactive online mapping. International journal of health geographics 9, 14. Shin, Y. &
-- Wunsche, B.C. (2013) A smartphone-based golf simulation exercise game for supporting arthritis patients. 2013 28th International Conference of Image and Vision Computing New Zealand (IVCNZ), IEEE, pp. 459–464.
-- Wohlin, C., Runeson, P., Höst, M., Ohlsson, M.C., Regnell, B., Wesslén, A. (2012) Experimentation in Software Engineering, Berlin, Heidelberg: Springer Berlin Heidelberg.
+![](Result.png)
